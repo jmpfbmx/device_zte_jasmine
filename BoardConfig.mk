@@ -122,7 +122,6 @@ DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
 
 # Init
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
