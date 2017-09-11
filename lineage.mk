@@ -1,7 +1,7 @@
 $(call inherit-product, device/zte/jasmine/full_jasmine.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_NAME := lineage_jasmine
 BOARD_VENDOR := zte
