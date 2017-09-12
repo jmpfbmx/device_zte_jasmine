@@ -20,10 +20,6 @@ LOCAL_PATH := device/zte/jasmine
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
-# Assertions
-#XXX
-#TARGET_BOARD_INFO_FILE ?= $(LOCAL_PATH)/board-info.txt
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -139,10 +135,6 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.twrp
 TARGET_RECOVERY_DEVICE_DIRS += $(LOCAL_PATH)/twrp
 TW_INCLUDE_CRYPTO := true
 endif
-
-# Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_jasmine
-TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 
 # RIL
 TARGET_RIL_VARIANT := caf
