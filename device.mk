@@ -205,6 +205,7 @@ PRODUCT_PACKAGES += \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     libwcnss_qmi \
+    libwifi-hal-qcom \
     libwpa_client \
     hostapd \
     wpa_supplicant \
