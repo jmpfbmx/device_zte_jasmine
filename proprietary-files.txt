@@ -399,20 +399,20 @@ vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 # GPS
-lib64/hw/gps.default.so
-lib64/libgps.utils.so
-lib64/libloc_api_v02.so
-lib64/libloc_core.so
-lib64/libloc_ds_api.so
-lib64/libloc_eng.so
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/izat.xt.srv.xml
 etc/xtra_root_cert.pem
-framework/com.qti.location.sdk.jar
 framework/izat.xt.srv.jar
+framework/com.qti.location.sdk.jar
+lib64/hw/gps.default.so:vendor/lib64/hw/gps.default.so
+lib64/libgps.utils.so:vendor/lib64/libgps.utils.so
+lib64/libloc_api_v02.so:vendor/lib64/libloc_api_v02.so
+lib64/libloc_core.so:vendor/lib64/libloc_core.so
+lib64/libloc_ds_api.so:vendor/lib64/libloc_ds_api.so
+lib64/libloc_eng.so:vendor/lib64/libloc_eng.so
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
-vendor/lib64/hw/flp.default.so
+vendor/lib64/hw/flp.default.so:vendor/lib64/hw/flp.default.so
 vendor/lib64/libalarmservice_jni.so
 vendor/lib64/libdataitems.so
 vendor/lib64/libflp.so
@@ -427,7 +427,7 @@ vendor/lib64/libulp2.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
 
 # QMI
-bin/irsc_util
+bin/irsc_util:vendor/bin/irsc_util
 vendor/lib64/libdiag.so
 vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libdsutils.so
@@ -462,13 +462,13 @@ vendor/lib/libqmi.so
 vendor/lib/libsmemlog.so
 
 # Radio
-bin/netmgrd
-bin/qmuxd
-bin/radish
-bin/rmt_storage
-bin/tftp_server
-lib64/libmodemapi.so
-lib64/libvendorutils.so
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmuxd:vendor/bin/qmuxd
+bin/radish:vendor/bin/radish
+bin/rmt_storage:vendor/bin/rmt_storage
+bin/tftp_server:vendor/bin/tftp_server
+lib64/libmodemapi.so:lib64/libmodemapi.so
+lib64/libvendorutils.so:vendor/lib64/libvendorutils.so
 vendor/bin/qti
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libconfigdb.so
