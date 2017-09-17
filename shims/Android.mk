@@ -5,5 +5,6 @@ LOCAL_SRC_FILES := \
 
 LOCAL_MODULE := libshim_gps
 LOCAL_MODULE_TAGS := optional
+LOCAL_PROPRIETARY_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
