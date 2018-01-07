@@ -370,10 +370,6 @@ vendor/lib/libmm-dspp-utils.so
 vendor/lib/libmm-qdcm-diag.so
 vendor/lib/libmm-qdcm.so
 
-# Protobuf
-vendor/lib64/libprotobuf-cpp-fulm.so
-vendor/lib64/libprotobuf-cpp-litm.so
-
 # Sensors
 bin/sensors.qcom:vendor/bin/sensors.qcom
 etc/sensors/hals.conf
