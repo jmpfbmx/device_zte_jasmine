@@ -18,7 +18,6 @@ LOCAL_SHARED_LIBRARIES := \
     android.hidl.token@1.0-utils \
     android.hardware.graphics.bufferqueue@1.0
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
 LOCAL_MULTILIB := 32
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_CFLAGS := -Werror
