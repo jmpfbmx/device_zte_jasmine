@@ -146,6 +146,9 @@ TARGET_USE_SDCLANG := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/recovery.fstab
 
+# Sensors
+USE_SENSOR_MULTI_HAL := true
+
 # Shims
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libizat_core.so|/system/vendor/lib/libshim_gps.so \

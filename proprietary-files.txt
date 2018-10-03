@@ -374,7 +374,6 @@ vendor/lib/libmm-qdcm.so
 bin/sensors.qcom:vendor/bin/sensors.qcom
 etc/sensors/hals.conf
 etc/sensors/sensor_def_qcomdev.conf
-lib64/hw/sensors.msm8952.so:vendor/lib64/hw/sensors.msm8952.so
 lib64/libsensorservice.so:vendor/lib64/libsensorservice.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
