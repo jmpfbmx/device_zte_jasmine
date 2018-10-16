@@ -244,7 +244,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
-    sensors.tulip
+    sensors.jasmine
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -260,7 +260,7 @@ PRODUCT_COPY_FILES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.tulip
+    android.hardware.usb@1.0-service.jasmine
 
 # Vibrator
 PRODUCT_PACKAGES += \
