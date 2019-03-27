@@ -291,7 +291,7 @@ on post-fs-data
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
     start config_bt_addr
-    start config_bluetooth
+    start hciattach
     start wcnss-service
 
     # Wifi firmware reload path
@@ -324,22 +324,29 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
-service start_hci_filter /system/bin/wcnss_filter
+service start_hci_filter /system/vendor/bin/wcnss_filter
     class late_start
     user root
     group bluetooth oem_2950
     disabled
 
-service config_bluetooth /system/bin/sh /system/vendor/bin/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    oneshot
-
-service hciattach /system/vendor/bin/init.qcom.bt.sh
+service config_bdaddr /system/vendor/bin/bt_mac_writer -O
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin
+    group bluetooth radio oem_2950
+    seclabel u:r:qti_init_shell:s0
+
+#service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
+#    class core
+#    user root
+#    oneshot
+
+service hciattach /system/vendor/bin/hci_qcomm_init -e
+    class late_start
+    user root
+    group bluetooth net_bt_admin qcom_diag radio
     disabled
+    seclabel u:r:qti_init_shell:s0
     oneshot
 
 on property:bluetooth.hciattach=true
