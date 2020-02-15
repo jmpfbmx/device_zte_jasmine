@@ -1,0 +1,6 @@
+#allow per_mgr per_mgr_service:vndservice_manager add;
+allow per_mgr self:capability net_raw;
+allow per_mgr servicemanager:binder { call transfer };
+binder_use(per_mgr)
+binder_call(per_mgr, system_server)
+#init_daemon_domain(per_mgr)

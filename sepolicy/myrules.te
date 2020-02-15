@@ -1,0 +1,76 @@
+type bt_mac_writer_exec, exec_type, vendor_file_type, file_type;
+type nv_data_file, file_type;
+#============= adsprpcd ==============
+allow adsprpcd firmware_file:file { getattr open read };
+allow adsprpcd firmware_file:dir search;
+#============= audioserver ==============
+allow audioserver i2c_device:chr_file { read write ioctl open }; allow audioserver sysfs:dir 
+{ open read };
+#============= cameraserver ==============
+allow cameraserver hal_configstore_default:binder call; allow 
+cameraserver socket_device:sock_file write;
+#============= hal_graphics_composer_default =============
+allow hal_graphics_composer_default firmware_file:dir search;
+#============= hal_light_default ==============
+allow hal_light_default sysfs:file { getattr open write };
+#============= hal_nfc_default ==============
+allow hal_nfc_default device:chr_file ioctl;
+#============= hal_power_default ==============
+allow hal_power_default init:unix_stream_socket connectto; allow 
+hal_power_default socket_device:sock_file write;
+allow hal_power_default perfd:unix_stream_socket connectto;
+#============= hal_sensors_default ==============
+allow hal_sensors_default sensors_device:chr_file getattr; allow 
+hal_sensors_default sysfs:file { open read };
+#============= hwservicemanager ==============
+dontaudit hwservicemanager init:binder call; allow hwservicemanager init:dir 
+search; allow hwservicemanager init:file { open read }; allow 
+hwservicemanager init:process getattr;
+#============= init ==============
+allow init device:chr_file { ioctl }; allow init hal_power_default:process 
+signull; allow init hwservicemanager:binder { call transfer }; dontaudit 
+init self:binder { call transfer }; allow init servicemanager:binder { 
+call transfer }; dontaudit init shell_exec:file execute_no_trans; allow init 
+socket_device:sock_file { create setattr write }; allow init 
+system_data_file:file append; allow init system_server:binder call; 
+allow init tee_device:chr_file { ioctl write }; dontaudit init 
+vendor_file:file execute_no_trans; allow init ion_device:chr_file ioctl;
+#============= kernel ==============
+dontaudit kernel self:capability dac_read_search;
+dontaudit kernel self:capability dac_override;
+#============= mm-pp-daemon ==============
+allow mm-pp-daemon system_prop:property_service set;
+#============= mm-qcamerad ==============
+allow mm-qcamerad camera_data_file:sock_file { create unlink }; allow 
+mm-qcamerad sysfs:file { open read };
+#============= netmgrd ==============
+allow netmgrd net_data_file:dir read; allow netmgrd 
+netd_socket:sock_file write; allow netmgrd toolbox_exec:file { execute 
+execute_no_trans getattr open read };
+#============= qti_init_shell ==============
+allow qti_init_shell shell_exec:file { getattr read }; allow 
+qti_init_shell toolbox_exec:file { execute execute_no_trans getattr open 
+read }; allow qti_init_shell vendor_file:file execute_no_trans;
+#============= sensors ==============
+allow sensors sysfs:file { open read };
+#============= servicemanager ==============
+dontaudit servicemanager init:binder transfer; allow servicemanager init:dir search; 
+allow servicemanager init:file { open read }; allow servicemanager init:process getattr;
+allow servicemanager per_mgr:dir search; allow servicemanager per_mgr:file { open getattr read }; 
+#============= system_app ==============
+dontaudit system_app init:binder call; dontaudit system_app installd:binder 
+call; dontaudit system_app netd:binder call; allow system_app per_mgr:binder call; 
+#dontaudit system_app storaged:binder call; 
+allow system_app time_daemon:unix_stream_socket connectto; allow system_app 
+wificond:binder call; dontaudit system_app netd_service:service_manager find;
+dontaudit system_app installd_service:service_manager find;
+#============= system_server ==============
+dontaudit system_server dalvikcache_data_file:file { write execute }; dontaudit 
+system_server init:binder { call transfer }; allow system_server 
+sensors:unix_stream_socket connectto; allow system_server 
+sensors_device:chr_file getattr; allow system_server 
+sensors_socket:sock_file write;
+#============= thermal-engine ==============
+allow thermal-engine socket_device:sock_file { create setattr };
+#============= time_daemon ==============
+allow time_daemon sysfs:file { open read };

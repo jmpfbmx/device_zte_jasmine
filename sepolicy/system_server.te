@@ -1,3 +1,0 @@
-qmux_socket(system_server);
-
-allow system_server init:binder call;

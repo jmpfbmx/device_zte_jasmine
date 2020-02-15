@@ -1,4 +1,6 @@
-allow qti_init_shell carrier_file:dir search;
-allow qti_init_shell carrier_file:file create_file_perms;
-allow qti_init_shell shell_exec:file { entrypoint getattr read };
-allow qti_init_shell toolbox_exec:file rx_file_perms;
+allow qti_init_shell bt_mac_writer_exec:file { read open execute execute_no_trans entrypoint };
+allow qti_init_shell nv_data_file:dir { search };
+allow qti_init_shell nv_data_file:file rw_file_perms;
+allow qti_init_shell hci_attach_dev:chr_file rw_file_perms;
+allow qti_init_shell hci_exec:file { execute_no_trans entrypoint };
+

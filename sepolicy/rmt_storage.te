@@ -1,4 +1,10 @@
-allow rmt_storage debugfs_rmt:dir search;
-allow rmt_storage debugfs_rmt:file rw_file_perms;
-allow rmt_storage modem_block_device:blk_file rw_file_perms;
-allow rmt_storage self:capability { net_raw sys_admin };
+#type debugfs_rmt, debugfs_type, fs_type;
+# debugfs access
+
+allow rmt_storage self:capability sys_admin;
+
+userdebug_or_eng(`
+  allow rmt_storage debugfs_rmt:dir search;
+  allow rmt_storage debugfs_rmt:file rw_file_perms;
+')
+

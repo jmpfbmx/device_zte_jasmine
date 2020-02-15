@@ -4,12 +4,11 @@
 /data/misc/AccOffset.txt                    u:object_r:sensors_data_file:s0
 /data/misc/cw_calibrator_mag.ini            u:object_r:sensors_data_file:s0
 /data/misc/cw_calibrator_proximty.ini       u:object_r:sensors_data_file:s0
-/data/misc/ipa(/.*)?                        u:object_r:ipacm_data_file:s0
+#/data/misc/ipa(/.*)?                        u:object_r:ipacm_data_file:s0
 /data/time(/.*)?                            u:object_r:time_data_file:s0
-/dev/radio(/.*)?                            u:object_r:radio_data_file:s0
 
 # Debug
-/sys/kernel/debug/ion/heaps/system          u:object_r:debugfs_ion:s0
+#/sys/kernel/debug/ion/heaps/system          u:object_r:debugfs_ion:s0
 /sys/kernel/debug/rmt_storage(/.*)?         u:object_r:debugfs_rmt:s0
 
 # HALs
@@ -18,10 +17,8 @@
 /system/vendor/bin/hw/android\.hardware\.vibrator@1\.0-service.jasmine           u:object_r:hal_vibrator_default_exec:s0
 
 # Partitions
-/dev/block/platform/soc\.0/7824900\.sdhci/by-name/cache                 u:object_r:cache_block_device:s0
 /dev/block/platform/soc\.0/7824900\.sdhci/by-name/extra                 u:object_r:metadata_block_device:s0
 /dev/block/platform/soc\.0/7824900\.sdhci/by-name/frp                   u:object_r:frp_block_device:s0
-/dev/block/platform/soc\.0/7824900\.sdhci/by-name/recovery              u:object_r:recovery_block_device:s0
 /dev/block/platform/soc\.0/7824900\.sdhci/by-name/rfg_[0-9]+            u:object_r:modem_block_device:s0
 
 # Persist
@@ -36,12 +33,17 @@
 /sys/devices/virtual/htc_sensorhub(/.*)?                                u:object_r:sysfs_sensors:s0
 /sys/devices/virtual/timed_output/vibrator/voltage_level                u:object_r:sysfs_vibrator:s0
 /sys/module/htc_bdaddress/parameters/bdaddress                          u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/devfreq(/.*)?						                        u:object_r:sysfs_devfreq:s0
 
 # Vendor binaries
 /system/bin/audiod                          u:object_r:audiod_exec:s0
-/system/vendor/bin/imscmservice             u:object_r:imscm_exec:s0
+#/system/vendor/bin/imscmservice             u:object_r:imscm_exec:s0
 /system/vendor/bin/init.qcom.bt.sh          u:object_r:bluetooth_loader_exec:s0
 /system/vendor/bin/perfd                    u:object_r:perfd_exec:s0
+/system/vendor/bin/hci_qcomm_init           u:object_r:hci_exec:s0
+/system/vendor/bin/bt_mac_writer            u:object_r:bt_mac_writer_exec:s0
 
 # Radio
 /dev/radio(/.*)?                            u:object_r:radio_data_file:s0
+
+/system/vendor/qcril.db                     u:object_r:nv_data_file:s0

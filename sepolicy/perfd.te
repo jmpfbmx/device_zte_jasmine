@@ -1,4 +1,19 @@
-type perfd, domain;
-type perfd_exec, exec_type, vendor_file_type, file_type;
+#type perfd, domain;
+#type perfd_exec, exec_type, vendor_file_type, file_type;
 
-init_daemon_domain(perfd)
+allow perfd sysfs:file { open read };
+allow perfd sysfs:dir { open read };
+allow perfd sysfs_devfreq:dir { open read };
+allow perfd sysfs_msm_perf:dir search;
+allow perfd freq_prop:file { open read getattr };
+allow perfd system_data_file:dir { write add_name };
+allow perfd system_data_file:file { read open getattr };
+allow perfd cgroup:file read;
+allow perfd sysfs_kgsl:file { read open };
+allow perfd proc:file { open read };
+allow perfd sysfs_memory:dir search;
+allow perfd sysfs_memory:file { open read write };
+allow perfd sysfs_devices_system_cpu:file write;
+dontaudit perfd self:capability dac_override;
+allow perfd socket_device:sock_file write;
+allow perfd self:capability kill;
