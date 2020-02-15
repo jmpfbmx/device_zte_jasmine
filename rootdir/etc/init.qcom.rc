@@ -1,4 +1,4 @@
- # Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,7 +26,7 @@
 #
 
 import init.qcom.usb.rc
-import init.target.rc
+#import init.target.rc
 import init.qcom.power.rc
 
 on early-init
@@ -153,6 +153,9 @@ on boot
     chown system system /sys/class/leds/red/led_time
     chown system system /sys/class/leds/green/led_time
     chown system system /sys/class/leds/blue/led_time
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/green/brightness
 
 on post-fs-data
     # Create directory for TZ Apps
@@ -344,7 +347,7 @@ service config_bdaddr /system/vendor/bin/bt_mac_writer -O
 service hciattach /system/vendor/bin/init.qcom.bt.sh
     class late_start
     user root
-    group bluetooth net_bt_admin qcom_diag radio
+    group bluetooth net_bt_admin diag radio
     disabled
     seclabel u:r:qti_init_shell:s0
     oneshot
@@ -355,13 +358,13 @@ on property:bluetooth.hciattach=true
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
-service imsqmidaemon /system/bin/imsqmidaemon
+service imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
-service imsdatadaemon /system/bin/imsdatadaemon
+service imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
