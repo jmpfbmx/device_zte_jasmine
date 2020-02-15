@@ -19,4 +19,4 @@ Rear Camera  | 5.0 MP, dual-LED flash
 Front Camera | 5.0 MP
 Release Date | August 2016
 
-![ZTE Trek 2 HD](https://www.gsmarc.com/device-images/att/trek-2-hd-tablet/gallery/image_18477.jpg)
+![ZTE Trek 2 HD](https://s14-eu5.startpage.com/cgi-bin/serveimage?url=https%3A%2F%2Fc1.neweggimages.com%2FProductImage%2FAHNK_1319159841368210769WuizEoLuR.jpg&sp=09491dfb868a98033e24fabe37c8f678&anticache=808994)
