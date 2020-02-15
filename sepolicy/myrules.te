@@ -61,6 +61,9 @@ allow qti_init_shell toolbox_exec:file { execute execute_no_trans getattr open r
 allow qti_init_shell vendor_file:file execute_no_trans;
 #============ secdiscard =============
 allow secdiscard_exec fps_blob:file rw_file_perms;
+#============ vold =============
+allow vold secdiscard_exec:file { execute execute_no_trans getattr open read };
+#allow vold system_data_file:file {unlink link rw_file_perms };
 #============= sensors ==============
 allow sensors sysfs:file { open read };
 #============= servicemanager ==============
