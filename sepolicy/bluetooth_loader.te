@@ -1,6 +1,5 @@
 # Bluetooth executables and scripts
 type hci_exec, exec_type, vendor_file_type, file_type;
-
 # Start bdAddrLoader from init
 
 # Run init.qcom.bt.sh

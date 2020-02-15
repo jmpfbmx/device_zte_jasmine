@@ -97,7 +97,8 @@ on boot
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
+    chown system system /proc/touchpanel/wake_gesture
+    chmod 0660 /proc/touchpanel/wake_gesture
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
 
@@ -125,6 +126,11 @@ on boot
 
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
+
+    # NFC
+    setprop ro.nfc.port "I2C"
+    chmod 0660 /dev/pn548
+    chown nfc system /dev/pn548
 
     # Set graphic node permissions
     chown system graphics /sys/class/graphics/fb0/mdp/bw_mode_bitmap
@@ -250,6 +256,10 @@ on post-fs-data
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
 
+    # NFC local data and nfcee xml storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
     # Sensor
     mkdir /persist/sensors 0775 system system
     chmod 664 /persist/sensors/sensors_settings
@@ -279,7 +289,7 @@ on post-fs-data
     write /data/misc/radio/db_check_done 0
     chown radio radio /data/misc/radio/db_check_done
     chmod 0660 /data/misc/radio/db_check_done
-
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
     # Create directory for tombstone
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -288,7 +298,7 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
 
     mkdir /data/system/fingerprint 0700 system system
-
+    
     setprop vold.post_fs_data_done 1
 
 on property:vold.decrypt=trigger_restart_framework
@@ -305,6 +315,16 @@ on property:vold.decrypt=trigger_restart_framework
 
 # Services begin here
 
+service ms-daemon /system/vendor/bin/modemservice
+    class late_start
+    user root
+
+service atfwd /system/vendor/bin/ATFWD-daemon
+    class late_start
+    user system
+    disabled
+    group system radio
+
 service perfd /system/vendor/bin/perfd
     class main
     user root
@@ -320,6 +340,17 @@ service charger /charger
     class charger
     group graphics system
     seclabel u:r:healthd:s0
+
+service gx_fpd /system/vendor/bin/gx_fpd
+    class late_start
+    user root
+    group system root input
+    onrestart restart fingerprintd
+
+#service fps_hal /vendor/bin/hw/android.hardware.biometrics.fingerprint@2.0-service.tulip
+ #   class late_start
+ #   user root
+ #   group system root input
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -538,6 +569,23 @@ service irsc_util /system/vendor/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
+service ril-daemon2 /vendor/bin/hw/rild -c 2
+    class main
+    socket rild2 stream 660 root radio
+    socket rild-debug2 stream 660 radio system 
+    socket sap_uim_socket2 stream 660 bluetooth bluetooth
+    user root
+    group radio cache inet misc audio readproc wakelock net_raw wifi system drmpc sdcard_r sdcard_rw oem_2950 diag log qcom_diag
+
+service ril-daemon /vendor/bin/hw/rild
+    class main
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio log readproc wakelock qcom_diag
+
+
 service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class main
     user root
@@ -620,5 +668,5 @@ service time_daemon /system/vendor/bin/time_daemon
 service wcnss-service /system/vendor/bin/wcnss_service
     class late_start
     user system
-    group system wifi radio
+    group oem_2950 system wifi radio
     oneshot

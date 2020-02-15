@@ -12,9 +12,10 @@
 /sys/kernel/debug/rmt_storage(/.*)?         u:object_r:debugfs_rmt:s0
 
 # HALs
-/system/vendor/bin/hw/android\.hardware\.light@2\.0-service.jasmine              u:object_r:hal_light_default_exec:s0
-/system/vendor/bin/hw/android\.hardware\.usb@1\.0-service.jasmine                u:object_r:hal_usb_default_exec:s0
-/system/vendor/bin/hw/android\.hardware\.vibrator@1\.0-service.jasmine           u:object_r:hal_vibrator_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.light@2\.0-service.tulip              u:object_r:hal_light_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.usb@1\.0-service.tulip                u:object_r:hal_usb_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.vibrator@1\.0-service.tulip           u:object_r:hal_vibrator_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service.tulip u:object_r:fps_hal_exec:s0
 
 # Partitions
 /dev/block/platform/soc\.0/7824900\.sdhci/by-name/extra                 u:object_r:metadata_block_device:s0
@@ -33,7 +34,7 @@
 /sys/devices/virtual/htc_sensorhub(/.*)?                                u:object_r:sysfs_sensors:s0
 /sys/devices/virtual/timed_output/vibrator/voltage_level                u:object_r:sysfs_vibrator:s0
 /sys/module/htc_bdaddress/parameters/bdaddress                          u:object_r:sysfs_bluetooth_writable:s0
-/sys/class/devfreq(/.*)?						                        u:object_r:sysfs_devfreq:s0
+/sys/class/devfreq(/.*)?						u:object_r:sysfs_devfreq:s0
 
 # Vendor binaries
 /system/bin/secdiscard			    u:object_r:secdiscard_exec:s0
@@ -47,5 +48,13 @@
 
 # Radio
 /dev/radio(/.*)?                            u:object_r:radio_data_file:s0
-
 /system/vendor/qcril.db                     u:object_r:nv_data_file:s0
+# NFC
+/dev/pn548                                  u:object_r:nfc_device:s0
+
+# Goodix Fingerprint
+/dev/goodix_fp*                             u:object_r:gx_fpd_device:s0
+/system/vendor/bin/gx_fpd                   u:object_r:gx_fpd_exec:s0
+
+# Goodix Fingerprint data
+/data/system/fingerprint(/.*)?              u:object_r:gx_fpd_data_file:s0

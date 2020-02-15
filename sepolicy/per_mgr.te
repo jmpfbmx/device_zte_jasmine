@@ -3,4 +3,5 @@ allow per_mgr self:capability net_raw;
 allow per_mgr servicemanager:binder { call transfer };
 binder_use(per_mgr)
 binder_call(per_mgr, system_server)
+binder_call(per_mgr, rild)
 #init_daemon_domain(per_mgr)

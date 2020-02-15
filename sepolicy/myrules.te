@@ -1,14 +1,15 @@
 type bt_mac_writer_exec, exec_type, vendor_file_type, file_type;
 type secdiscard_exec, exec_type, file_type;
 type nv_data_file, file_type;
+type fps_blob, file_type;
 permissive vold;
 permissive system_app;
 #============= adsprpcd ==============
 allow adsprpcd firmware_file:file { getattr open read };
 allow adsprpcd firmware_file:dir search;
 #============= audioserver ==============
-allow audioserver i2c_device:chr_file { read write ioctl open }; allow audioserver sysfs:dir 
-{ open read };
+allow audioserver i2c_device:chr_file { read write ioctl open }; 
+allow audioserver sysfs:dir { open read };
 #============= cameraserver ==============
 allow cameraserver hal_configstore_default:binder call; 
 allow cameraserver socket_device:sock_file write;
@@ -43,6 +44,7 @@ allow init system_server:binder call;
 allow init tee_device:chr_file { ioctl write }; 
 dontaudit init vendor_file:file execute_no_trans; 
 allow init ion_device:chr_file ioctl;
+allow init fingerprintd_data_file:file append;
 #============= kernel ==============
 dontaudit kernel self:capability dac_read_search;
 dontaudit kernel self:capability dac_override;
@@ -59,6 +61,13 @@ allow netmgrd toolbox_exec:file { execute execute_no_trans getattr open read };
 allow qti_init_shell shell_exec:file { getattr read }; 
 allow qti_init_shell toolbox_exec:file { execute execute_no_trans getattr open read }; 
 allow qti_init_shell vendor_file:file execute_no_trans;
+#============= rild ==============
+allow rild radio_data_file:dir { add_name getattr open read remove_name write search }; 
+allow rild radio_data_file:file { create getattr ioctl lock open read setattr unlink write }; 
+allow rild self:capability { chown sys_module dac_override dac_read_search }; 
+allow rild servicemanager:binder call; 
+allow rild vendor_file:file ioctl;
+allow rild nv_data_file:file { read open getattr lock ioctl };
 #============ secdiscard =============
 allow secdiscard_exec fps_blob:file rw_file_perms;
 #============ vold =============
@@ -73,7 +82,11 @@ allow servicemanager init:file { open read };
 allow servicemanager init:process getattr;
 allow servicemanager per_mgr:dir search; 
 allow servicemanager per_mgr:file { open getattr read }; 
+allow servicemanager rild:dir search; 
+allow servicemanager rild:file { open read };
+allow servicemanager rild:process getattr; 
 allow servicemanager per_mgr:process getattr;
+allow servicemanager hal_fingerprint_default:dir search;
 #============= system_app ==============
 dontaudit system_app init:binder call; 
 dontaudit system_app installd:binder call; 

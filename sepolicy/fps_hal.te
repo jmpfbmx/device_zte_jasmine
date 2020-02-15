@@ -1,0 +1,28 @@
+typeattribute fps_hal binder_in_vendor_violators;
+type fps_hal_service, service_manager_type;
+permissive fps_hal;
+hal_server_domain(fps_hal, hal_fingerprint)
+binder_use(fps_hal)
+#init_daemon_domain(fps_hal), as this throws out an error because of tmpfs, we need to "expand" the macro
+domain_auto_trans(init, fps_hal_exec, fps_hal)
+allow fps_hal gx_fpd:binder { transfer call };
+allow fps_hal gx_fpd_service:service_manager find;
+allow fps_hal fingerprint_service:service_manager find;
+allow fps_hal tee_device:chr_file rw_file_perms;
+allow fps_hal uhid_device:chr_file rw_file_perms;
+allow fps_hal servicemanager:binder { transfer call };
+
+set_prop(fps_hal, system_prop)
+r_dir_file(fps_hal, firmware_file)
+
+# Need to add auth tokens to KeyStore
+use_keystore(fps_hal)
+allow fps_hal keystore:keystore_key { add_auth };
+# need to find KeyStore and add self
+allow fps_hal fps_hal_service:service_manager { add find };
+
+allow fps_hal keystore_service:service_manager find;
+
+# For permissions checking
+binder_call(fps_hal, system_server);
+allow fps_hal permission_service:service_manager find;
