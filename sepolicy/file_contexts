@@ -30,7 +30,6 @@
 # Sysfs
 /sys/bus/iio/devices(/.*)?                                              u:object_r:sysfs_sensors:s0
 /sys/devices/soc.0/1a00000.qcom,mdss_mdp(/.*)?                          u:object_r:sysfs_graphics:s0
-/sys/devices/soc.0/fp_fpc1155.108(/.*)?                                 u:object_r:sysfs_fingerprint:s0
 /sys/devices/soc.0/78b6000.i2c/i2c-2/2-0032/leds(/.*)?                  u:object_r:sysfs_leds:s0
 /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0072/iio:device0(/.*)?           u:object_r:sysfs_sensors:s0
 /sys/devices/virtual/htc_sensorhub(/.*)?                                u:object_r:sysfs_sensors:s0
@@ -48,13 +47,6 @@
 
 # NFC
 /dev/pn548                                  u:object_r:nfc_device:s0
-
-# Goodix Fingerprint
-/dev/goodix_fp*                             u:object_r:gx_fpd_device:s0
-/system/bin/gx_fpd                          u:object_r:gx_fpd_exec:s0
-
-# Goodix Fingerprint data
-/data/system/fingerprint(/.*)?              u:object_r:gx_fpd_data_file:s0
 
 #Firmware
 /firmware(/.*)?				    u:object_r:firmware_file:s0

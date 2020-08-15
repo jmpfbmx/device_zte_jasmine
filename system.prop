@@ -82,9 +82,6 @@ debug.sf.enable_gl_backpressure=1
 # Factory Reset Protection
 ro.frp.pst=/dev/block/platform/soc.0/7824900.sdhci/by-name/config
 
-# Fingerprint
-ro.hardware.fingerprint=goodix
-
 # Media
 persist.media.treble_omx=false
 debug.stagefright.ccodec=0
