@@ -11,7 +11,7 @@ on init
     chmod 660 /sys/class/leds/green/brightness
 	
     
-service light-hal /vendor/bin/hw/android.hardware.light@2.0-service.tulip
+service light-hal /vendor/bin/hw/android.hardware.light@2.0-service.jasmine
     interface android.hardware.light@2.0::ILight default
     class hal
     user system

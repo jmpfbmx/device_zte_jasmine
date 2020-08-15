@@ -17,7 +17,7 @@
 
 set -e
 
-DEVICE=tulip
+DEVICE=jasmine
 VENDOR=zte
 
 # Load extractutils and do some sanity checks

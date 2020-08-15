@@ -16,7 +16,7 @@
 
 set -e
 
-DEVICE=tulip
+DEVICE=jasmine
 VENDOR=zte
 
 INITIAL_COPYRIGHT_YEAR=2017

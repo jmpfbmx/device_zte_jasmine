@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_tulip.mk
+    $(LOCAL_DIR)/lineage_jasmine.mk
 
 COMMON_LUNCH_CHOICES := \
-	lineage_tulip-user \
-	lineage_tulip-userdebug \
-	lineage_tulip-eng
+	lineage_jasmine-user \
+	lineage_jasmine-userdebug \
+	lineage_jasmine-eng

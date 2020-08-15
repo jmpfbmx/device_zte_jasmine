@@ -15,7 +15,7 @@
 #
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/zte/tulip/tulip-vendor.mk)
+$(call inherit-product-if-exists, vendor/zte/jasmine/jasmine-vendor.mk)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 # Overlays
@@ -167,7 +167,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service.tulip \
+    android.hardware.biometrics.fingerprint@2.0-service.jasmine \
     libunwind \
     fakelogprint
 
@@ -243,7 +243,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.tulip
+    android.hardware.light@2.0-service.jasmine
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -274,8 +274,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-nci.conf \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
-    vendor/zte/tulip/proprietary/vendor/lib64/hw/android.hardware.nfc@1.0-impl.so:system/vendor/lib64/hw/android.hardware.nfc@1.0-impl.so \
-    vendor/zte/tulip/proprietary/vendor/lib64/hw/nfc_nci.msm8952.so:system/vendor/lib64/hw/nfc_nci.msm8952.so
+    vendor/zte/jasmine/proprietary/vendor/lib64/hw/android.hardware.nfc@1.0-impl.so:system/vendor/lib64/hw/android.hardware.nfc@1.0-impl.so \
+    vendor/zte/jasmine/proprietary/vendor/lib64/hw/nfc_nci.msm8952.so:system/vendor/lib64/hw/nfc_nci.msm8952.so
 
 
 # OMX
@@ -315,7 +315,7 @@ PRODUCT_PACKAGES += \
 
 # Recovery
 PRODUCT_PACKAGES += \
-    librecovery_updater_tulip
+    librecovery_updater_jasmine
 
 # Renderscript
 PRODUCT_PACKAGES += \
@@ -335,7 +335,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
-    sensors.tulip
+    sensors.jasmine
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -343,7 +343,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.1-service.tulip
+    android.hardware.thermal@1.1-service.jasmine
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf

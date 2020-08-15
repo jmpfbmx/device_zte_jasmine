@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.light@2.0-service.tulip"
+#define LOG_TAG "android.hardware.light@2.0-service.jasmine"
 #include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>
 #include <utils/Errors.h>

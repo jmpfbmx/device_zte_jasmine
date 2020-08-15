@@ -16,7 +16,7 @@
 
 BOARD_VENDOR := zte
 
-LOCAL_PATH := device/zte/tulip
+LOCAL_PATH := device/zte/jasmine
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 TARGET_CPU_CORTEX_A53 := true
@@ -52,7 +52,7 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/zte/msm8952
-TARGET_KERNEL_CONFIG := lineage_tulip_defconfig
+TARGET_KERNEL_CONFIG := lineage_jasmine_defconfig
 
 # APEX
 TARGET_FLATTEN_APEX := true
@@ -201,7 +201,7 @@ WIFI_DRIVER_FW_PATH_AP      := "ap"
 WIFI_DRIVER_FW_PATH_STA     := "sta"
 
 VENDOR_SECURITY_PATCH := 2017-09-01
-TARGET_OTA_ASSERT_DEVICE := tulip
+TARGET_OTA_ASSERT_DEVICE := tulip, jasmine
 EXCLUDE_SERIF_FONTS := true
 
 # Filesystem
@@ -213,5 +213,5 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 25429515776
 BOARD_ROOT_EXTRA_FOLDERS := firmware persist dsp
 
 # inherit from the proprietary version
--include vendor/zte/tulip/BoardConfigVendor.mk
+-include vendor/zte/jasmine/BoardConfigVendor.mk
 -include vendor/gapps/arm64/BoardConfigVendor.mk
