@@ -45,8 +45,5 @@
 # Radio
 /dev/radio(/.*)?                            u:object_r:radio_data_file:s0
 
-# NFC
-/dev/pn548                                  u:object_r:nfc_device:s0
-
 #Firmware
 /firmware(/.*)?				    u:object_r:firmware_file:s0

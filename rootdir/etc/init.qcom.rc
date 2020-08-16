@@ -116,8 +116,6 @@ on boot
     chmod 2770 /dev/socket/qmux_bluetooth
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
-    mkdir /dev/socket/qmux_nfc 0770 nfc nfc
-    chmod 2770 /dev/socket/qmux_nfc
 
     mkdir /persist/drm 0770 system system
     mkdir /persist/bluetooth 0770 bluetooth bluetooth
@@ -130,11 +128,6 @@ on boot
 
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
-
-    # NFC
-    setprop ro.nfc.port "I2C"
-    chmod 0660 /dev/pn548
-    chown nfc system /dev/pn548
 
     # Set graphic node permissions
     chown system graphics /sys/class/graphics/fb0/mdp/bw_mode_bitmap
@@ -262,11 +255,6 @@ on post-fs-data
     #Create PERFD deamon related dirs
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
-
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
-    mkdir /data/vendor/nfc 0770 nfc nfc
 
     # Sensor
     mkdir /persist/sensors 0775 system system
@@ -509,7 +497,7 @@ service vendor.qcom-sh /system/vendor/bin/init.qcom.sh
 service vendor.qmuxd /system/vendor/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc oem_2950
+    group radio audio bluetooth gps oem_2950
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.qseecomd /system/vendor/bin/qseecomd
