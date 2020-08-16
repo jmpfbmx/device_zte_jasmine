@@ -212,4 +212,3 @@ BOARD_ROOT_EXTRA_FOLDERS := firmware persist dsp
 
 # inherit from the proprietary version
 -include vendor/zte/jasmine/BoardConfigVendor.mk
--include vendor/gapps/arm64/BoardConfigVendor.mk
